@@ -113,7 +113,7 @@ var FeatureObjs = [
     },
     {
         text: 'Quality Products',
-        number: '002',
+        number: '02',
         icon: 'fa-check'
     },
     {
@@ -157,6 +157,8 @@ if(featureEl){
 // form valid
 
 window.onload = function(){
+
+    //start name field validation
     const nameRegEx = /^[A-Z][a-z]{1,}$/;
     var name = document.querySelector("#name-input");
     var reqTxt = document.querySelector("#required-field-name");
@@ -178,7 +180,6 @@ window.onload = function(){
             name.classList.remove("border-success");
             name.classList.add("border-danger");
             reqTxt.classList.remove("invisible");
-            // incTxt.classList.add("invisible");
         } 
         //if regex true then success
         if(nameRegEx.test(name.value)){
@@ -213,4 +214,5 @@ window.onload = function(){
             name.classList.remove("border-danger");
         }
     })
+    //end name field validation
 }

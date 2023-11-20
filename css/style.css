@@ -1,6 +1,6 @@
 /********** Template CSS **********/
 :root {
-    --primary: #AB7442;
+    --primary: #4d42ab;
     --light: #F5F5F5;
     --dark: #353535;
 }
@@ -626,8 +626,25 @@
 *{
     margin: 0px;
     padding: 0px;
+    overflow-x: hidden;
 }
 .form-height{
     height: 55px;
 }
+.text-primary{
+    color: #008080!important;
+}
+.br-btn{
+    background-color:#008080 ;
+    color:white;
+}
 
+.br-about{
+    object-fit: cover;
+}
+.br-counter-up-style{
+    width: 60px; height: 60px;
+}
+.feature-custom{
+    width: 60px; height: 60px;
+}

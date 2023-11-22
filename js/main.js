@@ -127,6 +127,28 @@ var FeatureObjs = [
         icon: 'fa-headphones'
     }
 ];
+var ddlFormObjs = [
+    {
+        value: "0",
+        service: "Select a service",
+        isSelected: true
+    },
+    {
+        value: "2",
+        service: "Service 1",
+        isSelected: false
+    },
+    {
+        value: "3",
+        service: "Service 2",
+        isSelected: false
+    },
+    {
+        value: "4",
+        service: "Service 3",
+        isSelected: false
+    }
+];
 
 //<div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
 //                   <div class="d-flex align-items-center justify-content-around mb-2">
@@ -151,68 +173,221 @@ if(featureEl){
 }
 
 
+//dynamic select ispis
+                                    // <select class="form-select form-height">
+                                    //     <option selected value="0">Select A Service</option>
+                                    //     <option value="1">Service 1</option>
+                                    //     <option value="2">Service 2</option>
+                                    //     <option value="3">Service 3</option>
+                                    // </select>
+
+
+function ddlFormMaker(ddl)
+{
+    return `<option ${ddl.isSelected ? "selected = 'selected'" : ""} value="${ddl.value}">${ddl.service}</option>`;
+}
+let ddlhtml = `<select class="form-select form-height">`;
+for(ddl of ddlFormObjs)
+{
+    ddlhtml += ddlFormMaker(ddl);
+}
+document.querySelector("#select-holder").innerHTML = ddlhtml;
 
 
 
-// form valid
-
-window.onload = function(){
-
-    //start name field validation
-    const nameRegEx = /^[A-Z][a-z]{1,}$/;
-    var name = document.querySelector("#name-input");
-    var reqTxt = document.querySelector("#required-field-name");
-    var incTxt = document.querySelector("#incorrect-field-name");
+var errorNameCounter = 0;
+// form validation before hitting the submit button
+window.onload = function()
+{
+    //name check of ui/ux
+    let nameRegEx = /^[A-Z][a-z]{1,}$/;
+    let name = document.querySelector("#name-input");
+    let errorText = document.querySelector("#field-name");
     name.addEventListener("focus", function(){
-        if(!name.value){
-            reqTxt.classList.remove("invisible")
-        }
-    })
-    name.addEventListener("keyup", function(){
-        //is it empty?
-        if(name.value){    
-            name.classList.remove("border-success");
-            name.classList.add("border-danger");
-            reqTxt.classList.add("invisible");
-        }
-            //if not empty show req field
-        else { 
-            name.classList.remove("border-success");
-            name.classList.add("border-danger");
-            reqTxt.classList.remove("invisible");
-        } 
-        //if regex true then success
-        if(nameRegEx.test(name.value)){
-            name.classList.remove("border-danger");
-            name.classList.add("border-success");
-            incTxt.classList.add("d-none");
-        }
-        //if regex false then danger
-        else{
-            name.classList.remove("border-success");
-            name.classList.add("border-danger");
-            incTxt.classList.remove("d-none");
 
+     if(!name.value){
+            errorText.classList.remove("invisible")
+            error("This field is required",errorText.id);
         }
-    })
-    name.addEventListener("blur", function(){
-        if(nameRegEx.test(name.value)){
+
+     });
+
+
+     name.addEventListener("keyup", function()
+     {
+        if(!name.value)
+        {    
+            danger(name);
+            error("This field is required",errorText.id);
+        }
+        
+        if(nameRegEx.test(name.value))
+        {
+            success(name);
+            errorDisable(errorText.id);
+        }
+        if(name.value && !nameRegEx.test(name.value)){
+            danger(name);
+            error("Enter a valid name",errorText.id);
+            errorNameCounter++;
+            
+        }
+
+     });
+     name.addEventListener("blur", function(){
+        if(!name.value){
             name.classList.remove("border-danger");
-            name.classList.add("border-success");
-            incTxt.classList.add("d-none");
+            name.classList.remove("border-success");
+            errorDisable(errorText.id);
+        }
+        if(errorNameCounter >= 2 && !nameRegEx.test(name.value))
+        {
+            name.setAttribute("placeholder","Example: Luka");
+            name.value = "";
         }
         else{
-            name.classList.remove("border-success");
-            name.classList.add("border-danger");
-            incTxt.classList.remove("d-none");
+            errorNameCounter = 0;
         }
-        //if there is no value in the box, remove all errors
-        if(!name.value){
-            incTxt.classList.add("d-none");
-            reqTxt.classList.add("invisible");
-            name.classList.remove("border-success");
-            name.classList.remove("border-danger");
+        if(nameRegEx.test(name.value)){
+            success(name);
+            //do success code for blur name
         }
-    })
-    //end name field validation
+
+     });
+
+
+
+
+
+
+        //email check for ui/ux
+    let emailRegEx = /^[a-z]{2,}\.[a-z]{2,}\.[1-9][0-9]{0,3}\.([1][0-9]|[2][0123])(@ict\.edu\.rs)$/;
+    let email = document.querySelector("#email-input");
+    let errorTextMail = document.querySelector("#field-email");
+    email.addEventListener("focus", function(){
+
+        if(!email.value){
+            errorTextMail.classList.remove("invisible")
+            error("This field is required",errorTextMail.id);
+        }
+
+     });
+
+
+     email.addEventListener("keyup", function()
+     {
+        if(!email.value)
+        {    
+            danger(email);
+            error("This field is required",errorTextMail.id);
+        }
+        
+        if(emailRegEx.test(email.value))
+        {
+            success(email);
+            errorDisable(errorTextMail.id);
+        }
+        if(email.value && !emailRegEx.test(email.value)){
+            danger(email);
+            error("Enter a valid Email Adress",errorTextMail.id);
+            errorNameCounter++;
+            
+        }
+        
+     });
+     email.addEventListener("blur", function(){
+        if(!email.value){
+            email.classList.remove("border-danger");
+            email.classList.remove("border-success");
+            errorDisable(errorTextMail.id);
+        }
+        if(errorNameCounter >= 2 && !emailRegEx.test(email.value))
+        {
+            email.setAttribute("placeholder","Example: pera.peric.31.22@ict.edu.rs");
+            email.value = "";
+            
+        }
+        else{
+            errorNameCounter = 0;
+        }
+        if(emailRegEx.test(email.value)){
+            success(email);
+            //do success code for blur email
+        }
+
+     });
+
+
+
+    //mobile check
+    let mobRegex = /^[0-9]{9,10}$/;
+    let mob = document.querySelector("#mobile-input");
+    let errorTextMob = document.querySelector("#field-mob");
+    mob.addEventListener("focus",function(){
+
+        if(!mob.value){
+            danger(mob);
+            error("This field is required", errorTextMob.id);
+        }
+
+    });
+    mob.addEventListener("keyup", function()
+     {
+        if(!mob.value)
+        {    
+            danger(mob);
+            error("This field is required",errorTextMob.id);
+        }
+        
+        if(mobRegex.test(mob.value))
+        {
+            success(mob);
+            errorDisable(errorTextMob.id);
+        }
+        if(mob.value && !mobRegex.test(mob.value)){
+            danger(mob);
+            error("Enter a valid Mobile Number",errorTextMob.id);
+            errorNameCounter++;
+            
+        }
+        
+     });
+
+     mob.addEventListener("blur", function(){
+        if(!mob.value){
+            mob.classList.remove("border-danger");
+            mob.classList.remove("border-success");
+            errorDisable(errorTextMob.id);
+        }
+        if(errorNameCounter >= 2 && !mobRegex.test(mob.value))
+        {
+            mob.setAttribute("placeholder","Example: 0612345678");
+            mob.value = "";
+            
+        }
+        else{
+            errorNameCounter = 0;
+        }
+
+     });
+
+
+}
+
+function danger(element)
+{
+    element.classList.remove("border-success");
+    element.classList.add("border-danger");
+}
+function success(element)
+{
+    element.classList.remove("border-danger");
+    element.classList.add("border-success");
+}
+function error(i,element){
+    document.querySelector("#" + element.toString()).innerHTML = i;
+    document.querySelector("#" + element.toString()).classList.remove("invisible");
+}
+function errorDisable(element){
+    document.querySelector("#" + element.toString()).classList.add("invisible");
 }

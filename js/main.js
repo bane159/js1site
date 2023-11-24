@@ -184,16 +184,16 @@ if(featureEl)
                                     // </select>
 
 
-// function ddlFormMaker(ddl)
-// {
-//     return `<option ${ddl.isSelected ? "selected = 'selected'" : ""} value="${ddl.value}">${ddl.service}</option>`;
-// }
-// let ddlhtml = `<select class="form-select form-height" id = "selectForm">`;
-// for(ddl of ddlFormObjs)
-// {
-//     ddlhtml += ddlFormMaker(ddl);
-// }
-// document.querySelector("#select-holder").innerHTML = ddlhtml;
+function ddlFormMaker(ddl)
+{
+    return `<option ${ddl.isSelected ? "selected = 'selected'" : ""} value="${ddl.value}">${ddl.service}</option>`;
+}
+let ddlhtml = `<select class="form-select form-height" id = "selectForm">`;
+for(ddl of ddlFormObjs)
+{
+    ddlhtml += ddlFormMaker(ddl);
+}
+document.querySelector("#select-holder").innerHTML = ddlhtml;
 
 let select = document.querySelector("#selectForm");
 var k = select.options[select.selectedIndex];
@@ -210,53 +210,80 @@ var allErrors = {
 }
 var errorNameCounter = 0;
 // form validation before hitting the submit button
-    var isNameOk = false;
-    var isEmailOk = false;
-    var isMobOk = false;
-window.onload = function()
-{
 
+
+
+
+//#region variables
 
     
+
+
+
+
+//#endregion
+
+// function uradiNesto(event){
+//     if(!this.value)
+//     {
+//         if (this. = "name-input"){
+//             errorText.classList.remove("invisible")
+//             error("This field is required",errorText.id);
+//         }
+//     }
+// }
+function isEmpty(){
+    if(!this.value){
+        error("This field is required", `field-${this.id}`)
+    }
+}
+
+    
+window.onload = function()
+{
+    // postavi focus dogadjaj na svaki element forme (text(ime), email i mobile(text))
+    var elementi = document.getElementsByTagName("input");
+    for(let el of elementi){
+        if(el.getAttribute("type") == "text" || el.getAttribute("type") == "email")
+            el.addEventListener("focus", isEmpty);
+    }
+    
+    const nameRegEx = /^[A-Z][a-z]{1,}$/;
+    let name = document.querySelector("#name");
+    let errorText = document.querySelector("#field-name");
     
 
     //name check of ui/ux
-    const nameRegEx = /^[A-Z][a-z]{1,}$/;
-    const name = document.querySelector("#name-input");
-    let errorText = document.querySelector("#field-name");
-    name.addEventListener("focus", function(){
-
-     if(!name.value){
-            errorText.classList.remove("invisible")
-            error("This field is required",errorText.id);
-            isNameOk = false;
-        }
-
-     });
-
-
-     name.addEventListener("keyup", function()
-     {
-        if(!name.value)
-        {    
-            danger(name);
-            error("This field is required",errorText.id);
-            isNameOk = false;
-        }
-        if(nameRegEx.test(name.value))
-        {
-            success(name);
-            errorDisable(errorText.id);
-            isNameOk = true;
-        }
-        if(name.value && !nameRegEx.test(name.value)){
-            danger(name);
-            error("Enter a valid name",errorText.id);
-            isNameOk = false;
     
-        }
-     });
+    // name.addEventListener("focus", function(){
+    //  if(!name.value){
+    //         // errorText.classList.remove("invisible")
+    //         error("This field is required",errorText.id);
+    //     }
+    //  });
+    // name.addEventListener("focus", isEmpty);
+
+
+    //  name.addEventListener("keyup", function()
+    //  {
+    //     if(!name.value)
+    //     {    
+    //         danger(name);
+    //         error("This field is required",errorText.id);
+    //     }
+    //     if(nameRegEx.test(name.value))
+    //     {
+    //         success(name);
+    //         errorDisable(errorText.id);
+    //     }
+    //     if(name.value && !nameRegEx.test(name.value)){
+    //         danger(name);
+    //         error("Enter a valid name",errorText.id);
+    //     }
+    //  });
      
+
+
     name.addEventListener("blur", function(){
         if(!name.value){
             name.classList.remove("border-danger");
@@ -266,14 +293,14 @@ window.onload = function()
             
         }
         if(!nameRegEx.test(name.value)){
-            isNameOk = false;
+            error("Name must be first uppercase")
             // allErrors.emailErrors.push("Enter a valid email: username@domen.com");
            
         }
 
         if(nameRegEx.test(name.value)){
             success(name);
-            isNameOk = true;
+            
             //do success code for blur name
         }
      });
@@ -285,36 +312,34 @@ window.onload = function()
 
         //email check for ui/ux
     const emailRegEx = /^[a-z]{2,}\.[a-z]{2,}\.[1-9][0-9]{0,3}\.([1][0-9]|[2][0123])(@ict\.edu\.rs)$/;
-    const email = document.querySelector("#email-input");
+    let email = document.querySelector("#email");
     let errorTextMail = document.querySelector("#field-email");
-    email.addEventListener("focus", function(){
-        if(!email.value){
-            errorTextMail.classList.remove("invisible")
-            error("This field is required",errorTextMail.id);
-            isEmailOk = false;
-        }
-     });
+    // email.addEventListener("focus", function(){
+    //     if(!email.value){
+    //         // errorTextMail.classList.remove("invisible")
+    //         error("This field is required",errorTextMail.id);
+            
+    //     }
+    //  });
      email.addEventListener("keyup", function()
      {
         if(!email.value)
         {    
             danger(email);
             error("This field is required",errorTextMail.id);
-            isEmailOk = false;
-
         }
         
         if(emailRegEx.test(email.value))
         {
             success(email);
             errorDisable(errorTextMail.id);
-            isEmailOk = true;
+            
 
         }
         if(email.value && !emailRegEx.test(email.value)){
             danger(email);
             error("Enter a valid Email Adress",errorTextMail.id);
-            isEmailOk = false;
+           
 
         }      
      });
@@ -326,13 +351,13 @@ window.onload = function()
             // allErrors.emailErrors.push("This field is required");
         }
         if(!emailRegEx.test(email.value)){
-            isEmailOk = false;
+            
 
             // allErrors.emailErrors.push("Please enter a valid name")
         }
         if(emailRegEx.test(email.value)){
             success(email);
-            isEmailOk = true;
+            
 
             //do success code for blur email
         }
@@ -342,33 +367,33 @@ window.onload = function()
 
     //mobile check
     const mobRegex = /^[0-9]{9,10}$/;
-    const mob = document.querySelector("#mobile-input");
-    let errorTextMob = document.querySelector("#field-mob");
-    mob.addEventListener("focus",function(){
-        if(!mob.value){
+    let mob = document.querySelector("#mobile");
+    let errorTextMob = document.querySelector("#field-mobile");
+    // mob.addEventListener("focus",function(){
+    //     if(!mob.value){
+    //         error("This field is required", errorTextMob.id);
             
-            error("This field is required", errorTextMob.id);
-            isMobOk = false;
-        }
-    });
+    //     }
+    // });
+    // mob.addEventListener("focus",isEmpty);
     mob.addEventListener("keyup", function()
      {
         if(!mob.value)
         {    
             danger(mob);
             error("This field is required",errorTextMob.id);
-            isMobOk = false;
+            
         }
         if(mobRegex.test(mob.value))
         {
             success(mob);
             errorDisable(errorTextMob.id);
-            isMobOk = true;
+            
         }
         if(mob.value && !mobRegex.test(mob.value)){
             danger(mob);
             error("Enter a valid Mobile Number",errorTextMob.id); 
-            isMobOk = false;
+            
         }
      });
 
@@ -386,20 +411,79 @@ window.onload = function()
         }
         if(mobRegex.test(mob.value)){
             success(mob);
-            isMobOk = true;
+            
             //do success code
         }
 
      });
 
+     let form = document.querySelector("#form");
+        
+        form.addEventListener("submit",validateForm);
+        function validateForm(event){
+            console.log(email)
+            event.preventDefault();
+            if(nameRegEx.test(name.value)){
+                form.submit();
+            }
+        }
+        
+
+
 
 }
-var form = document.querySelector("#form");
 
-form.onsubmit = function() {
-    if(!isNameOk || !isEmailOk || !isMobOk) 
-    return false;
-}
+// let form = document.querySelector("#form");
+
+//         form.addEventListener("submit",validateForm);
+//         function validateForm(event){
+            
+//             event.preventDefault();
+//             if(nameRegEx.test(name.value)){
+//                 form.submit();
+//             }
+//         }
+
+// form.onsubmit = function() {
+
+//     let name = document.querySelector("#name-input");
+//     let email = document.querySelector("#email-input");
+//     let mob = document.querySelector("#mobile-input");
+//     if(!nameRegEx.test(name.value) || !emailRegEx.test(email.value) || !mobRegex.test(mob.value)) 
+//         return false;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function danger(element)
 {

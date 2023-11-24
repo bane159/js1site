@@ -482,7 +482,7 @@
                             <h1 class="display-5 mb-4">Contact Us</h1>
                         </div>
                         <p class="mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
-                        <form action="s.php" method="post">
+                        <form  action="2.php" method="post" id="form">
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6 d-flex flex-column justify-content-center">
                                     <input type="text" class="form-control form-height" placeholder="Your Name" id="name-input" name="name-input" />
@@ -503,7 +503,12 @@
                                     </small>
                                 </div>
                                 <div class="col-12 col-sm-6" id="select-holder">
-                                    
+                                    <select class="form-select form-height" id="selectForm">
+                                        <option selected = "selected" value="0">Select A Service</option>
+                                       <option value="1">Service 1</option>
+                                       <option value="2">Service 2</option>
+                                        <option value="3">Service 3</option>
+                                       </select>
                                 </div>
                                 <div class="col-12">
                                     <textarea class="form-control" placeholder="Special Note"></textarea>
@@ -512,8 +517,9 @@
                                     </small>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                                    <input type="submit" name="btn-submit" id="btn-submit" value="Submit" class="btn btn-primary w-100 py-3" />
                                 </div>
+                                
                             </div>
                         </form>
                     </div>
@@ -684,7 +690,7 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
+                         <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
@@ -698,7 +704,7 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <a href="#" class="btn btn-lg br-btn btn-lg-square rounded-5 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
     <!-- JavaScript Libraries -->

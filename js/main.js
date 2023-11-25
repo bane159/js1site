@@ -35,10 +35,10 @@
             $('.back-to-top').fadeOut('slow');
         }
     });
-    $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
-        return false;
-    });
+    // $('.back-to-top').click(function () {
+    //     $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+    //     return false;
+    // });
 
 
     // Facts counter JQuery promeni kasnije
@@ -188,21 +188,14 @@ function ddlFormMaker(ddl)
 {
     return `<option ${ddl.isSelected ? "selected = 'selected'" : ""} value="${ddl.value}">${ddl.service}</option>`;
 }
-let ddlhtml = `<select class="form-select form-height" id = "selectForm">`;
-for(ddl of ddlFormObjs)
-{
-    ddlhtml += ddlFormMaker(ddl);
-}
-document.querySelector("#select-holder").innerHTML = ddlhtml;
+// let ddlhtml = `<select class="form-select form-height" id = "selectForm">`;
+// for(ddl of ddlFormObjs)
+// {
+//     ddlhtml += ddlFormMaker(ddl);
+// }
+// document.querySelector("#select-holder").innerHTML = ddlhtml;
 
-let select = document.querySelector("#selectForm");
-var k = select.options[select.selectedIndex];
-console.log(k);
-select.addEventListener("change", function(){
-    k = select.options[select.selectedIndex];
-    console.log(k);
-    
-})
+
 var allErrors = {
     nameErrors: [],
     emailErrors: [],
@@ -213,15 +206,6 @@ var errorNameCounter = 0;
 
 
 
-
-//#region variables
-
-    
-
-
-
-
-//#endregion
 
 // function uradiNesto(event){
 //     if(!this.value)
@@ -248,7 +232,7 @@ window.onload = function()
             el.addEventListener("focus", isEmpty);
     }
     
-    const nameRegEx = /^[A-Z][a-z]{1,}$/;
+    const nameRegEx = /^[A-Z][a-z]{1,10}$/;
     let name = document.querySelector("#name");
     let errorText = document.querySelector("#field-name");
     
@@ -264,23 +248,25 @@ window.onload = function()
     // name.addEventListener("focus", isEmpty);
 
 
-    //  name.addEventListener("keyup", function()
-    //  {
-    //     if(!name.value)
-    //     {    
-    //         danger(name);
-    //         error("This field is required",errorText.id);
-    //     }
-    //     if(nameRegEx.test(name.value))
-    //     {
-    //         success(name);
-    //         errorDisable(errorText.id);
-    //     }
-    //     if(name.value && !nameRegEx.test(name.value)){
-    //         danger(name);
-    //         error("Enter a valid name",errorText.id);
-    //     }
-    //  });
+     name.addEventListener("keyup", function()
+     {
+        if(!name.value)
+        {    
+            danger(name);
+            error("This field is required",errorText.id);
+        }
+        else errorDisable(errorText.id);
+        
+        if(nameRegEx.test(name.value))
+        {
+            success(name);
+            errorDisable(errorText.id);
+        }
+        // if(name.value && !nameRegEx.test(name.value)){
+        //     danger(name);
+        //     error("Enter a valid name",errorText.id);
+        // }
+     });
      
 
 
@@ -292,12 +278,10 @@ window.onload = function()
             // allErrors.emailErrors.push("This field is required");
             
         }
-        if(!nameRegEx.test(name.value)){
-            error("Name must be first uppercase")
-            // allErrors.emailErrors.push("Enter a valid email: username@domen.com");
-           
-        }
-
+        // else if(!nameRegEx.test(name.value)){
+        //     error("Example: Josh", errorText.id)
+        //     // allErrors.emailErrors.push("Enter a valid email: username@domen.com");
+        // }
         if(nameRegEx.test(name.value)){
             success(name);
             
@@ -308,10 +292,10 @@ window.onload = function()
 
 
 
-
+     
 
         //email check for ui/ux
-    const emailRegEx = /^[a-z]{2,}\.[a-z]{2,}\.[1-9][0-9]{0,3}\.([1][0-9]|[2][0123])(@ict\.edu\.rs)$/;
+    const emailRegEx = /^[A-z0-9]{2,30}@(gmail|yahoo)\.(com|rs)$/;
     let email = document.querySelector("#email");
     let errorTextMail = document.querySelector("#field-email");
     // email.addEventListener("focus", function(){
@@ -328,20 +312,21 @@ window.onload = function()
             danger(email);
             error("This field is required",errorTextMail.id);
         }
+        else errorDisable(errorTextMail.id);
         
-        if(emailRegEx.test(email.value))
-        {
-            success(email);
-            errorDisable(errorTextMail.id);
+        // if(emailRegEx.test(email.value))
+        // {
+        //     success(email);
+        //     errorDisable(errorTextMail.id);
             
 
-        }
-        if(email.value && !emailRegEx.test(email.value)){
-            danger(email);
-            error("Enter a valid Email Adress",errorTextMail.id);
+        // }
+        // if(email.value && !emailRegEx.test(email.value)){
+        //     danger(email);
+        //     error("Enter a valid Email Adress",errorTextMail.id);
            
 
-        }      
+        // }      
      });
     email.addEventListener("blur", function(){
         if(!email.value){
@@ -350,15 +335,14 @@ window.onload = function()
             errorDisable(errorTextMail.id);
             // allErrors.emailErrors.push("This field is required");
         }
-        if(!emailRegEx.test(email.value)){
+        // if(!emailRegEx.test(email.value)){
             
 
-            // allErrors.emailErrors.push("Please enter a valid name")
-        }
+        //     // allErrors.emailErrors.push("Please enter a valid name")
+        // }
         if(emailRegEx.test(email.value)){
             success(email);
             
-
             //do success code for blur email
         }
      });
@@ -383,18 +367,18 @@ window.onload = function()
             danger(mob);
             error("This field is required",errorTextMob.id);
             
-        }
+        }else  errorDisable(errorTextMob.id);
         if(mobRegex.test(mob.value))
         {
             success(mob);
             errorDisable(errorTextMob.id);
             
         }
-        if(mob.value && !mobRegex.test(mob.value)){
-            danger(mob);
-            error("Enter a valid Mobile Number",errorTextMob.id); 
+        // if(mob.value && !mobRegex.test(mob.value)){
+        //     danger(mob);
+        //     error("Enter a valid Mobile Number",errorTextMob.id); 
             
-        }
+        // }
      });
 
     mob.addEventListener("blur", function(){
@@ -404,27 +388,80 @@ window.onload = function()
             errorDisable(errorTextMob.id);
             // allErrors.mobErrors.push("This field is required");
         }
-        if(!mobRegex.test(mob.value)){
-            // danger(mob);
-            // allErrors.mobErrors.push("Entar a valid mobile number");
+        open("project.html", "fuck off u dog");
+        // if(!mobRegex.test(mob.value)){
+        //     // danger(mob);
+        //     // allErrors.mobErrors.push("Entar a valid mobile number");
             
-        }
+        // }
         if(mobRegex.test(mob.value)){
             success(mob);
-            
+            errorDisable(errorTextMob.id);
             //do success code
         }
 
      });
 
-     let form = document.querySelector("#form");
-        
+        //should i subit or no? Also errors prinhting if not sending
+
+            let form = document.querySelector("#form");
+            let select = document.querySelector("#selectForm");
+            // let errorTextService = querySelector("#field-service");
+            let errorTextService = document.querySelector("#field-service");
+            
+            
+            var k = 0;
+            
+            select.addEventListener("change", function(){
+                
+                k = parseInt(select.options[select.selectedIndex].value);
+                if(k != 0) errorDisable(errorTextService.id);
+                console.log(k);
+                
+            });
         form.addEventListener("submit",validateForm);
         function validateForm(event){
-            console.log(email)
+            
             event.preventDefault();
-            if(nameRegEx.test(name.value)){
+            if(nameRegEx.test(name.value) && mobRegex.test(mob.value) && emailRegEx.test(email.value) && k != 0){
                 form.submit();
+            }
+            else if(!nameRegEx.test(name.value)) 
+            {
+                error(`Enter a valid name: "Josh"`,errorText.id);
+                scroll({
+                    top: 4800,
+                    left: 100,
+                    behavior: "auto",
+                  });
+
+            }
+            if(!emailRegEx.test(email.value))    {
+                error(`Invalid email: "username@gmail.com"`,errorTextMail.id);
+                scroll({
+                    top: 4800,
+                    left: 100,
+                    behavior: "auto",
+                  });
+            }
+            if(!mobRegex.test(mob.value))        
+            {
+                error(`Invalid mobile number: "0641234567"`,errorTextMob.id);
+            scroll({
+                top: 4800,
+                left: 100,
+                behavior: "auto",
+              });
+            }
+
+            if(k == 0)                          
+            {
+                error(`Please select a service"`,errorTextService.id);
+                scroll({
+                top: 4800,
+                left: 100,
+                behavior: "auto",
+              });
             }
         }
         

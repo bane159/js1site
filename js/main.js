@@ -270,60 +270,63 @@ var projectsObjs = [
    
 ];
 var teamObjs = [
-{
-    img:{
-        src:'img/team-1.jpg',
-        alt:'Josh'
+    {
+        img:{
+            // src:'img/team-1.jpg',
+            src:'img/non-template-img/josh.jpg',
+            alt:'Josh'
+        },
+        link:{
+            yt:{ link: 'https://www.youtube.com/watch?v=85hQhUMu0_M&ab_channel=10hoursofShitposting'},
+            x: 'https://twitter.com',
+            ig: 'https://www.instagram.com/'
+        },
+        name: 'Josh Hutcherson',
+        proffesion: 'Actor/Musitian'
     },
-    link:{
-        yt:{ link: 'https://www.youtube.com/watch?v=85hQhUMu0_M&ab_channel=10hoursofShitposting'},
-        x: 'https://twitter.com',
-        ig: 'https://www.instagram.com/'
-    },
-    name: 'Josh Hutcherson',
-    proffesion: 'Actor/Musitian'
-},
-{
-    img:{
-        src:'img/team-2.jpg',
-        alt:'Andreja'
-    },
-    link:{
-        yt:{ link: 'https://www.youtube.com/watch?v=85hQhUMu0_M&ab_channel=10hoursofShitposting'},
-        x: 'https://twitter.com',
-        ig: 'https://www.instagram.com/'
-    },
-    name: 'Andreja Sreckovic',
-    proffesion: 'Proffesional Class Skipper'
-},
-{
-    img:{
-        src:'img/team-3.jpg',
-        alt:'Sanja'
-    },
-    link:{
-        yt:{ link: 'https://www.youtube.com/watch?v=85hQhUMu0_M&ab_channel=10hoursofShitposting'},
-        x: 'https://twitter.com',
-        ig: 'https://www.instagram.com/'
-    },
-    name: 'Sanja Pavlovic',
-    proffesion: 'Voli milanka'
-},
-{
-    img:{
-        src:'img/team-4.jpg',
-        alt:'Milos'
-    },
-    link:{
-        yt:{ link: 'https://www.youtube.com/watch?v=85hQhUMu0_M&ab_channel=10hoursofShitposting'},
-        x: 'https://twitter.com',
-        ig: 'https://www.instagram.com/'
-    },
-    name: 'Milos Milinkovic',
-    proffesion: 'Muffin Baker'
-}
+    {
+        img:{
+            // src:'img/team-2.jpg',
+            src:'img/non-template-img/srecko.jpg',
 
-
+            alt:'Andreja'
+        },
+        link:{
+            yt:{ link: 'https://www.youtube.com/watch?v=85hQhUMu0_M&ab_channel=10hoursofShitposting'},
+            x: 'https://twitter.com',
+            ig: 'https://www.instagram.com/'
+        },
+        name: 'Andreja Sreckovic',
+        proffesion: 'Proffesional Class Skipper'
+    },
+    {
+        img:{
+            // src:'img/team-3.jpg',
+            src:'img/team-3.jpg',
+            alt:'Sanja'
+        },
+        link:{
+            yt:{ link: 'https://www.youtube.com/watch?v=85hQhUMu0_M&ab_channel=10hoursofShitposting'},
+            x: 'https://twitter.com',
+            ig: 'https://www.instagram.com/'
+        },
+        name: 'Sanja Pavlovic',
+        proffesion: 'Voli milanka'
+    },
+    {
+        img:{
+            // src:'img/team-4.jpg',
+            src:'img/non-template-img/misa.jpg',
+            alt:'Milos'
+        },
+        link:{
+            yt:{ link: 'https://www.youtube.com/watch?v=85hQhUMu0_M&ab_channel=10hoursofShitposting'},
+            x: 'https://twitter.com',
+            ig: 'https://www.instagram.com/'
+        },
+        name: 'Milos Milinkovic',
+        proffesion: 'Muffin Baker'
+    }
 ];
 
 //#region Dynamic ispis Team member

@@ -1,4 +1,4 @@
-//TEMPLATE JS
+//BIO TEMPLATE JS SADA JE VECINOM PROMENJEN
 (function ($) {
     "use strict";
 
@@ -28,13 +28,13 @@
     
     
     // Back to top button JQuery promeni kasnije
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 300) {
-            $('.back-to-top').fadeIn('slow');
-        } else {
-            $('.back-to-top').fadeOut('slow');
-        }
-    });
+    // $(window).scroll(function () {
+    //     if ($(this).scrollTop() > 300) {
+    //         $('.back-to-top').fadeIn('slow');
+    //     } else {
+    //         $('.back-to-top').fadeOut('slow');
+    //     }
+    // });
     // $('.back-to-top').click(function () {
     //     $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
     //     return false;
@@ -49,18 +49,18 @@
 
 
     // Header carousel karosel library owl
-    $(".header-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1500,
-        items: 1,
-        dots: true,
-        loop: true,
-        nav : true,
-        navText : [
-            '<i class="bi bi-chevron-left"></i>',
-            '<i class="bi bi-chevron-right"></i>'
-        ]
-    });
+    // $(".header-carousel").owlCarousel({
+    //     autoplay: true,
+    //     smartSpeed: 1500,
+    //     items: 1,
+    //     dots: true,
+    //     loop: true,
+    //     nav : true,
+    //     navText : [
+    //         '<i class="bi bi-chevron-left"></i>',
+    //         '<i class="bi bi-chevron-right"></i>'
+    //     ]
+    // });
 
 
     // Testimonials carousel karosel library owl
@@ -149,17 +149,268 @@ var ddlFormObjs = [
         isSelected: false
     }
 ];
+var servicesObj = [
+    {
+        img: { 
+            src: 'img/non-template-img/pc-repair.jpg',
+            alt: 'pc repair image'
+            },
+        text:{
+            caption: 'PC Repair Services',
+            paragraph: 'ByteBlend excels in diagnosing and fixing PC issues, ensuring smooth operation with expert hardware and software solutions.',
+            link: 'Reach out now!'
+        }
+    },
+    {
+        img: { 
+            src: 'img/non-template-img/gpu.jpg',
+            alt: 'gpu'
+            },
+        text:{
+            caption: 'Hardware Components Sales',
+            paragraph: 'Explore top-notch hardware components at ByteBlend, where quality meets expertise for your computing needs.',
+            link: 'Coming Out Soon!'
+        }
+    },
+    {
+        img: { 
+            src: 'img/non-template-img/pccase.jpg',
+            alt: 'pccase'
+            },
+        text:{
+            caption: 'Custom PC Assembly',
+            paragraph: 'ByteBlend crafts tailored desktops, guaranteeing high performance with customized configurations.',
+            link: 'Reach out now!'
+        }
+    },
+    {
+        img: { 
+            src: 'img/non-template-img/software.jpg',
+            alt: 'software'
+            },
+        text:{
+            caption: 'Software Installation',
+            paragraph: 'ByteBlend ensures seamless software setup and updates, optimizing your system for peak performance.',
+            link: 'Reach out now!'
+        }
+    },
+    {
+        img: { 
+            src: 'img/non-template-img/systemOpt.jpg',
+            alt: 'systemOpt'
+            },
+        text:{
+            caption: 'Software Optimization',
+            paragraph: 'ByteBlend enhances system speed and efficiency through expert tuning and maintenance services.',
+            link: 'Reach out now!'
+        }
+    },
+    {
+        img: { 
+            src: 'img/non-template-img/network.jpg',
+            alt: 'network'
+            },
+        text:{
+            caption: 'Network Solutions',
+            paragraph: 'ByteBlend delivers reliable wired and wireless network setups with troubleshooting and robust security measures.',
+            link: 'Reach out now!'
+        }
+    },
 
-//<div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-//                   <div class="d-flex align-items-center justify-content-around mb-2">
-//                        <div class="d-flex align-items-center justify-content-center bg-light" style="width: 60px; height: 60px;">
-//                            <i class="fa fa-user-check fa-2x text-primary"></i>
-//                        </div>
-//                        <h1 class="display-1 text-black-50 mb-0">01</h1>
-//                    </div>
-//                   <h5 class= "">Creative Designers</h5>
-//    </div>
+];
+var projectsObjs = [
+    {
+        img: {
+            src: 'img/non-template-img/project-1.jpg', 
+            alt:'First Project'
+        },
+        caption: 'Programming Setups',
+        text: 'We take special care for programming rigs.'
+    },
+    {
+        img: {
+            src: 'img/non-template-img/project-2.jpg', 
+            alt:'Second Project'
+        },
+        caption: 'Home setups',
+        text: 'We make sure that you enjoy your everyday surfing.'
+    },
+    {
+        img: {
+            src: 'img/non-template-img/project-3.jpg', 
+            alt:'Third Project'
+        },
+        caption: 'Server cable menagment',
+        text: 'We are here to do even the dirty work!'
+    },
+    {
+        img: {
+            src: 'img/non-template-img/project-4.jpg', 
+            alt:'Forth Project'
+        },
+        caption: 'System Optimization',
+        text: 'If your PC is running poorly we are here to fix it.'
+    },
+    {
+        img: {
+            src: 'img/non-template-img/project-5.jpg', 
+            alt:'Fifth Project'
+        },
+        caption: 'Gaming Setups',
+        text: 'Who doesn`t like making gaming setups? We sure like it!'
+    },
+    {
+        img: {
+            src: 'img/non-template-img/project-6.jpg', 
+            alt:'Sixth Project'
+        },
+        caption: 'Temp',
+        text: 'lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem'
+    }
+   
+];
+var teamObjs = [
+{
+    img:{
+        src:'img/team-1.jpg',
+        alt:'Josh'
+    },
+    link:{
+        yt:{ link: 'https://www.youtube.com/watch?v=85hQhUMu0_M&ab_channel=10hoursofShitposting'},
+        x: 'https://twitter.com',
+        ig: 'https://www.instagram.com/'
+    },
+    name: 'Josh Hutcherson',
+    proffesion: 'Actor/Musitian'
+},
+{
+    img:{
+        src:'img/team-2.jpg',
+        alt:'Andreja'
+    },
+    link:{
+        yt:{ link: 'https://www.youtube.com/watch?v=85hQhUMu0_M&ab_channel=10hoursofShitposting'},
+        x: 'https://twitter.com',
+        ig: 'https://www.instagram.com/'
+    },
+    name: 'Andreja Sreckovic',
+    proffesion: 'Proffesional Class Skipper'
+},
+{
+    img:{
+        src:'img/team-3.jpg',
+        alt:'Sanja'
+    },
+    link:{
+        yt:{ link: 'https://www.youtube.com/watch?v=85hQhUMu0_M&ab_channel=10hoursofShitposting'},
+        x: 'https://twitter.com',
+        ig: 'https://www.instagram.com/'
+    },
+    name: 'Sanja Pavlovic',
+    proffesion: 'Voli milanka'
+},
+{
+    img:{
+        src:'img/team-4.jpg',
+        alt:'Milos'
+    },
+    link:{
+        yt:{ link: 'https://www.youtube.com/watch?v=85hQhUMu0_M&ab_channel=10hoursofShitposting'},
+        x: 'https://twitter.com',
+        ig: 'https://www.instagram.com/'
+    },
+    name: 'Milos Milinkovic',
+    proffesion: 'Muffin Baker'
+}
 
+
+];
+
+//#region Dynamic ispis Team member
+function makeTeamMember(member){
+
+    return `<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="team-item">
+        <div class="overflow-hidden position-relative">
+            <img class="img-fluid" src="${member.img.src}" alt="${member.img.alt}" />
+            <div class="team-social">
+                <a class="btn btn-square" href="${member.link.yt.link}" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a class="btn btn-square" href="${member.link.x}" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-square" href="${member.link.ig}" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="text-center border border-5 border-light border-top-0 p-4">
+            <h5 class="mb-0">${member.name}</h5>
+            <small>${member.proffesion}</small>
+        </div>
+    </div>
+</div>`;
+}
+
+var teamHTML = '';
+for(let member of teamObjs){
+    teamHTML += makeTeamMember(member)
+}
+document.querySelector('#team-holder').innerHTML = teamHTML;
+
+//#endregion
+
+//#region dinamic ispis projects
+function makeProject(project){
+    return `<div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.5s">
+    <div class="rounded overflow-hidden">
+        <div class="position-relative overflow-hidden">
+            <img class="img-fluid w-100" src="${project.img.src}" alt="${project.img.alt}" />
+            <!-- <div class="portfolio-overlay">
+                <a class="btn btn-square btn-outline-light mx-1" href="img/portfolio-6.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                <a class="btn btn-square btn-outline-light mx-1" href=""><i class="fa fa-link"></i></a>
+            </div> -->
+        </div>
+        <div class="border border-5 border-light border-top-0 p-4">
+            <p class="text-primary fw-medium mb-2">${project.caption}</p>
+            <h5 class="lh-base mb-0">${project.text}</h5>
+        </div>
+    </div>
+</div>`;
+}
+var projectHold = document.querySelector('#projects-holder');
+var projectHTML = '';
+for(let project of projectsObjs)
+{
+
+    projectHTML += makeProject(project);
+
+}
+projectHold.innerHTML = projectHTML;
+//#endregion
+
+
+//#region dinamic ispis projects
+function makeService(service)
+{
+    return `<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item">
+                    <div class="overflow-hidden">
+                        <img class="img-fluid"src="${service.img.src}" alt="${service.img.alt}" /></div><div class="p-4 text-center border border-5 border-light border-top-0"><h4 class="mb-3">${service.text.caption}</h4><p>${service.text.paragraph}</p>
+                        <a class="fw-medium text-primary" href="#form-hold">${service.text.link}
+                        <i class="fa fa-arrow-right ms-2 text-primary"></i></a>
+                    </div>
+                </div>
+            </div>`
+}
+
+var serviceHTML = ``;
+var serviceHolder = document.querySelector("#services-holder");
+for(let service of servicesObj){
+    serviceHTML += makeService(service);
+
+}
+console.log(serviceHolder);
+serviceHolder.innerHTML = serviceHTML;
+
+//#endregion
+
+//#region dinamic ispis Featured
 function makeFeature(feature)
 {
     let featureHTML = `<div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s"><div class="d-flex align-items-center justify-content-evenly mb-2"><div class="d-flex align-items-center justify-content-center bg-light" style="width: 60px; height: 60px;"><i class="fa ${feature.icon} fa-2x text-primary"></i></div><h1 class="display-1 text-black-50 mb-0">${feature.number}</h1></div><h5 class = "text-center">${feature.text}</h5></div>`;
@@ -175,54 +426,63 @@ if(featureEl)
     }
 }
 
-//dynamic select ispis
-                                    // <select class="form-select form-height">
-                                    //     <option selected value="0">Select A Service</option>
-                                    //     <option value="1">Service 1</option>
-                                    //     <option value="2">Service 2</option>
-                                    //     <option value="3">Service 3</option>
-                                    // </select>
+//#endregion
 
 
-function ddlFormMaker(ddl)
+
+
+
+//#region dynamic select ispis
+var selectHolder = document.querySelector("#select-holder");
+
+var smallSlct = document.createElement('small');
+smallSlct.classList.add('form-text');
+smallSlct.classList.add('text-danger');
+smallSlct.setAttribute('id','field-service')
+
+
+
+function createOption(opt){
+    let option = document.createElement('option');
+    if(opt.isSelected) option.setAttribute('selected', 'selected');
+    option.setAttribute('value', `${opt.value}`);
+    option.text = opt.service;
+    return option;
+}
+
+var slctEl = document.createElement('select');
+slctEl.classList.add('form-select');
+slctEl.classList.add('form-height');
+slctEl.setAttribute('id','selectForm');
+selectHolder.appendChild(slctEl);
+let arrayOption = new Array();
+for (let opt of ddlFormObjs)
 {
-    return `<option ${ddl.isSelected ? "selected = 'selected'" : ""} value="${ddl.value}">${ddl.service}</option>`;
+    arrayOption.push(createOption(opt));
 }
-// let ddlhtml = `<select class="form-select form-height" id = "selectForm">`;
-// for(ddl of ddlFormObjs)
-// {
-//     ddlhtml += ddlFormMaker(ddl);
-// }
-// document.querySelector("#select-holder").innerHTML = ddlhtml;
+for(let opt of arrayOption){
 
-
-var allErrors = {
-    nameErrors: [],
-    emailErrors: [],
-    mobErrors: []
+    slctEl.appendChild(opt);
 }
-var errorNameCounter = 0;
-// form validation before hitting the submit button
+
+selectHolder.appendChild(smallSlct);
+
+//#endregion
 
 
 
 
-// function uradiNesto(event){
-//     if(!this.value)
-//     {
-//         if (this. = "name-input"){
-//             errorText.classList.remove("invisible")
-//             error("This field is required",errorText.id);
-//         }
-//     }
-// }
+//#region Ceo kod za Forme - Provera, ispis gresaka, provera za slanje na server(zaustavlja submit ako nije sve lepo uneto i izbaci greske u suprotnom podaci se salju na .php).
+
+
+
+//Ako je empty printuj error u odgovarajuce small polje
 function isEmpty(){
     if(!this.value){
         error("This field is required", `field-${this.id}`)
     }
 }
 
-    
 window.onload = function()
 {
     // postavi focus dogadjaj na svaki element forme (text(ime), email i mobile(text))
@@ -388,7 +648,6 @@ window.onload = function()
             errorDisable(errorTextMob.id);
             // allErrors.mobErrors.push("This field is required");
         }
-        open("project.html", "fuck off u dog");
         // if(!mobRegex.test(mob.value)){
         //     // danger(mob);
         //     // allErrors.mobErrors.push("Entar a valid mobile number");
@@ -400,37 +659,62 @@ window.onload = function()
             //do success code
         }
 
+    });
+
+
+
+
+        //Checking if smt selected from ddl
+     var k = 0;
+     let select = document.querySelector("#selectForm");
+    
+    select.addEventListener("change", function(){
+        
+        k = parseInt(select.options[select.selectedIndex].value);
+        
+        if(k != 0) {
+            errorDisable(errorTextService.id);
+            select.classList.remove("border-danger");
+            select.classList.remove("border-success");
+            success(select)
+        }
+        else danger(select)
+        console.log(k);
+         
      });
+     select.addEventListener("blur", function(){
+
+        if(k == 0) {
+            select.classList.remove("border-danger");
+            select.classList.remove("border-success");
+        }
+        console.log(k);
+
+     });
+     
+
+
 
         //should i subit or no? Also errors prinhting if not sending
 
             let form = document.querySelector("#form");
-            let select = document.querySelector("#selectForm");
             // let errorTextService = querySelector("#field-service");
             let errorTextService = document.querySelector("#field-service");
             
             
-            var k = 0;
-            
-            select.addEventListener("change", function(){
-                
-                k = parseInt(select.options[select.selectedIndex].value);
-                if(k != 0) errorDisable(errorTextService.id);
-                console.log(k);
-                
-            });
         form.addEventListener("submit",validateForm);
-        function validateForm(event){
+        function validateForm(event)
+        {
             
             event.preventDefault();
             if(nameRegEx.test(name.value) && mobRegex.test(mob.value) && emailRegEx.test(email.value) && k != 0){
                 form.submit();
             }
-            else if(!nameRegEx.test(name.value)) 
+            if(!nameRegEx.test(name.value)) 
             {
                 error(`Enter a valid name: "Josh"`,errorText.id);
                 scroll({
-                    top: 4800,
+                    top: 4900,
                     left: 100,
                     behavior: "auto",
                   });
@@ -439,7 +723,7 @@ window.onload = function()
             if(!emailRegEx.test(email.value))    {
                 error(`Invalid email: "username@gmail.com"`,errorTextMail.id);
                 scroll({
-                    top: 4800,
+                    top: 4900,
                     left: 100,
                     behavior: "auto",
                   });
@@ -448,7 +732,7 @@ window.onload = function()
             {
                 error(`Invalid mobile number: "0641234567"`,errorTextMob.id);
             scroll({
-                top: 4800,
+                top: 4900,
                 left: 100,
                 behavior: "auto",
               });
@@ -458,7 +742,7 @@ window.onload = function()
             {
                 error(`Please select a service"`,errorTextService.id);
                 scroll({
-                top: 4800,
+                top: 4900,
                 left: 100,
                 behavior: "auto",
               });
@@ -469,59 +753,11 @@ window.onload = function()
 
 
 }
-
-// let form = document.querySelector("#form");
-
-//         form.addEventListener("submit",validateForm);
-//         function validateForm(event){
-            
-//             event.preventDefault();
-//             if(nameRegEx.test(name.value)){
-//                 form.submit();
-//             }
-//         }
-
-// form.onsubmit = function() {
-
-//     let name = document.querySelector("#name-input");
-//     let email = document.querySelector("#email-input");
-//     let mob = document.querySelector("#mobile-input");
-//     if(!nameRegEx.test(name.value) || !emailRegEx.test(email.value) || !mobRegex.test(mob.value)) 
-//         return false;
-// }
+//#endregion
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//#region Univerzalne metode
 function danger(element)
 {
     element.classList.remove("border-success");
@@ -539,3 +775,4 @@ function error(i,element){
 function errorDisable(element){
     document.querySelector("#" + element.toString()).classList.add("invisible");
 }
+//#endregion

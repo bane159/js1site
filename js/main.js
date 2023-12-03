@@ -1,4 +1,4 @@
-//BIO TEMPLATE JS SADA JE VECINOM PROMENJEN
+//BIO TEMPLATE JS SADA JE VECINOM PROMENJEN  - zakomentatisan
 (function ($) {
     "use strict";
 
@@ -14,17 +14,17 @@
     
     
     // Initiate the wowjs
-    new WOW().init();
+    // new WOW().init();
 
 
-    // Sticky Navbar  JQuery promeni kasnije
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 800) {
-            $('.sticky-top').addClass('shadow-sm').css('top', '0px');
-        } else {
-            $('.sticky-top').removeClass('shadow-sm').css('top', '-100px');
-        }
-    });
+    // Sticky Navbar 
+    //  $(window).scroll(function () {
+    //     if ($(this).scrollTop() > 300) {
+    //         $('.sticky-top').addClass('shadow-sm').css('top', '0px');
+    //     } else {
+    //         $('.sticky-top').removeClass('shadow-sm').css('top', '-100px');
+    //     }
+    // });
     
     
     // Back to top button JQuery promeni kasnije
@@ -100,11 +100,63 @@
     
 })(jQuery);
 
+
+//jQUERY
+
+//nakon sto se skrola malo dole doda se nav
+$(window).scroll(function () {
+    if ($(this).scrollTop() > 700) {
+        $('#nav').addClass('show-nav');
+    } else {
+        $('#nav').removeClass('show-nav');
+    }
+});
+
+
+//back to top dugme
+$("#bck-top").click(function(){
+    scroll({
+            top: 0,
+            left: 100,
+            behavior: "smooth",
+        });
+});
+
+//demo slider
+var slide = document.querySelector(".slide");
+console.log(slide)
+$("#slidetoggle").click(function(){
+    $(".slide").fadeOut();
+});
+
+let pics = ['img/carousel-1.jpg','img/carousel-2.jpg','img/carousel-3.jpg'];
+var ijk = 1;
+setInterval(function(){
+    
+    slide.src = pics[ijk++];
+    if(ijk >= pics.length) ijk = 0; 
+    console.log("set interval!");
+
+},5000);
+
+
+
+
+
+
+
+
+
+
+
+
+
 //DINAMICKI ISPIS
 
 //objekti
 // delay, fa-icon, broj, text 
 
+//#region Objekti Za Dinamicki Ispis
 var FeatureObjs = [
     {
         text: 'Creative Designers',
@@ -130,22 +182,22 @@ var FeatureObjs = [
 var ddlFormObjs = [
     {
         value: "0",
-        service: "Select a service",
+        service: "Select a service *",
         isSelected: true
     },
     {
         value: "2",
-        service: "Service 1",
+        service: "Setups",
         isSelected: false
     },
     {
         value: "3",
-        service: "Service 2",
+        service: "Cable Menagment",
         isSelected: false
     },
     {
         value: "4",
-        service: "Service 3",
+        service: "System Optimization",
         isSelected: false
     }
 ];
@@ -264,8 +316,8 @@ var projectsObjs = [
             src: 'img/non-template-img/project-6.jpg', 
             alt:'Sixth Project'
         },
-        caption: 'Temp',
-        text: 'lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem'
+        caption: 'User Experiance',
+        text: 'We care about how you feel. '
     }
    
 ];
@@ -286,8 +338,8 @@ var teamObjs = [
     },
     {
         img:{
-            // src:'img/team-2.jpg',
-            src:'img/non-template-img/srecko.jpg',
+            src:'img/team-2.jpg',
+            // src:'img/non-template-img/srecko.jpg',
 
             alt:'Andreja'
         },
@@ -301,8 +353,8 @@ var teamObjs = [
     },
     {
         img:{
-            // src:'img/team-3.jpg',
             src:'img/team-3.jpg',
+            // src:'img/team-3.jpg',
             alt:'Sanja'
         },
         link:{
@@ -315,8 +367,8 @@ var teamObjs = [
     },
     {
         img:{
-            // src:'img/team-4.jpg',
-            src:'img/non-template-img/misa.jpg',
+            src:'img/team-4.jpg',
+            // src:'img/non-template-img/misa.jpg',
             alt:'Milos'
         },
         link:{
@@ -328,6 +380,9 @@ var teamObjs = [
         proffesion: 'Muffin Baker'
     }
 ];
+//#endregion
+
+
 
 //#region Dynamic ispis Team member
 function makeTeamMember(member){
@@ -388,7 +443,7 @@ projectHold.innerHTML = projectHTML;
 //#endregion
 
 
-//#region dinamic ispis projects
+//#region dinamic ispis services
 function makeService(service)
 {
     return `<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
@@ -420,7 +475,7 @@ function makeFeature(feature)
     return featureHTML;
 }
 var featureEl = document.querySelector("#dinamicFeatures");
-console.log(featureEl);
+
 if(featureEl)
 {
     for(let feature of FeatureObjs)
@@ -431,17 +486,13 @@ if(featureEl)
 
 //#endregion
 
-
-
-
-
 //#region dynamic select ispis
 var selectHolder = document.querySelector("#select-holder");
 
 var smallSlct = document.createElement('small');
 smallSlct.classList.add('form-text');
 smallSlct.classList.add('text-danger');
-smallSlct.setAttribute('id','field-service')
+smallSlct.setAttribute('id','field-service');
 
 
 
@@ -471,6 +522,9 @@ for(let opt of arrayOption){
 selectHolder.appendChild(smallSlct);
 
 //#endregion
+
+
+
 
 
 
@@ -716,39 +770,39 @@ window.onload = function()
             if(!nameRegEx.test(name.value)) 
             {
                 error(`Enter a valid name: "Josh"`,errorText.id);
-                scroll({
-                    top: 4900,
-                    left: 100,
-                    behavior: "auto",
-                  });
+                // scroll({
+                //     top: 4900,
+                //     left: 100,
+                //     behavior: "auto",
+                //   });
 
             }
             if(!emailRegEx.test(email.value))    {
                 error(`Invalid email: "username@gmail.com"`,errorTextMail.id);
-                scroll({
-                    top: 4900,
-                    left: 100,
-                    behavior: "auto",
-                  });
+                // scroll({
+                //     top: 4900,
+                //     left: 100,
+                //     behavior: "auto",
+                //   });
             }
             if(!mobRegex.test(mob.value))        
             {
                 error(`Invalid mobile number: "0641234567"`,errorTextMob.id);
-            scroll({
-                top: 4900,
-                left: 100,
-                behavior: "auto",
-              });
+            // scroll({
+            //     top: 4900,
+            //     left: 100,
+            //     behavior: "auto",
+            //   });
             }
 
             if(k == 0)                          
             {
                 error(`Please select a service"`,errorTextService.id);
-                scroll({
-                top: 4900,
-                left: 100,
-                behavior: "auto",
-              });
+            //     scroll({
+            //     top: 4900,
+            //     left: 100,
+            //     behavior: "auto",
+            //   });
             }
         }
         
@@ -760,7 +814,7 @@ window.onload = function()
 
 
 
-//#region Univerzalne metode
+//#region  Metode Za Rad Sa Formom
 function danger(element)
 {
     element.classList.remove("border-success");

@@ -658,3 +658,41 @@ textarea{
     resize: none;
     
 }
+#nav{
+    
+    z-index: 999999999999999999999;
+    transition: top 0.5s ease;
+    /* position: fixed; */
+    /* top: 0px; Adjust the initial top value as needed */
+    /* width: 100%; */
+    
+}
+@keyframes sticknav {
+    0%{top: -100px;}
+    /* 25%{top:-75px;}
+    50%{top: -50px;}
+    75%{top: -25px;} */
+    100%{top: 0px;}
+}
+.br-nav-transition{
+    /* position: fixed;
+    animation-name: sticknav;
+    animation-duration: 5s; */
+    /* transition: .5s; */
+    position: fixed!important;
+    animation-name: sticknav;
+    animation-duration: 1s;
+}
+.show-nav {
+    /* top: -100px; */
+    position: fixed;
+    animation-name: sticknav;
+    animation-duration: 0.6s;
+    animation-timing-function: ease;
+}
+.slide{
+    display: none;
+}
+.br-active{
+    display: block!important;
+}

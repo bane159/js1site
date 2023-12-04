@@ -650,6 +650,7 @@
     background-color:#008080 ;
     color:white;
     transform: scale(1.02);
+    overflow: hidden;
 }  
 
 .br-about{
@@ -750,4 +751,7 @@ textarea{
 }
 .authorimg{
     background-position: -340px;
+}
+#subscribed{
+display: none;
 }

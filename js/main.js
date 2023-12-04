@@ -2,7 +2,7 @@
 (function ($) {
     "use strict";
 
-    // Spinner
+    // Spinner 
     var spinner = function () {
         setTimeout(function () {
             if ($('#spinner').length > 0) {
@@ -13,54 +13,37 @@
     spinner();
     
     
-    // Initiate the wowjs
+    // Initiate the wowjs TEMPLATE CODE
     // new WOW().init();
 
 
-    // Sticky Navbar 
-    //  $(window).scroll(function () {
-    //     if ($(this).scrollTop() > 300) {
-    //         $('.sticky-top').addClass('shadow-sm').css('top', '0px');
-    //     } else {
-    //         $('.sticky-top').removeClass('shadow-sm').css('top', '-100px');
-    //     }
-    // });
+   
+
     
     
-    // Back to top button JQuery promeni kasnije
-    // $(window).scroll(function () {
-    //     if ($(this).scrollTop() > 300) {
-    //         $('.back-to-top').fadeIn('slow');
-    //     } else {
-    //         $('.back-to-top').fadeOut('slow');
-    //     }
-    // });
-    // $('.back-to-top').click(function () {
-    //     $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
-    //     return false;
-    // });
+    
 
 
-    // Facts counter JQuery promeni kasnije
+    // Facts counter JQuery promeni kasnije 
     $('[data-toggle="counter-up"]').counterUp({
         delay: 10,
         time: 2000
     });
 
 
-    // Header carousel karosel library owl
-    // $(".header-carousel").owlCarousel({
-    //     autoplay: true,
-    //     smartSpeed: 1500,
-    //     items: 1,
-    //     dots: true,
-    //     loop: true,
-    //     nav : true,
-    //     navText : [
-    //         '<i class="bi bi-chevron-left"></i>',
-    //         '<i class="bi bi-chevron-right"></i>'
-    //     ]
-    // });
+    // Header carousel karosel library owl 
+    $(".header-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 1000,
+        items: 1,
+        dots: true,
+        loop: true,
+        nav : true,
+        navText : [
+            '<i class="bi bi-chevron-left"></i>',
+            '<i class="bi bi-chevron-right"></i>'
+        ]
+    });
 
 
     // Testimonials carousel karosel library owl
@@ -86,7 +69,7 @@
     });
 
 
-    // Portfolio isotope and filter filter za tip projekta
+    // Portfolio isotope and filter filter za tip projekta TEMPLATE CODE
     // var portfolioIsotope = $('.portfolio-container').isotope({
     //     itemSelector: '.portfolio-item',
     //     layoutMode: 'fitRows'
@@ -105,7 +88,7 @@
 
 //nakon sto se skrola malo dole doda se nav
 $(window).scroll(function () {
-    if ($(this).scrollTop() > 700) {
+    if ($(this).scrollTop() > 600) {
         $('#nav').addClass('show-nav');
     } else {
         $('#nav').removeClass('show-nav');
@@ -118,9 +101,9 @@ $(window).scroll(function () {
 //back to top dugme
 
 $(window).scroll(function () {
-    if ($(this).scrollTop() < 700) {
+    if ($(this).scrollTop() < 600) {
         $('#bck-top').removeClass('back-to-top-appear').addClass("back-to-top-dissaper");
-        setTimeout(dissaper,490);
+        setTimeout(dissaper,480);
     } else {
         $('#bck-top').removeClass('back-to-top-dissaper').addClass("back-to-top-appear").removeAttr("style");
     }
@@ -177,22 +160,16 @@ $("#bck-top").click(function(){
     
 //         console.log(sib);
 // }
-$("#prev").click(function(){
-    $('.br-active').fadeToggle().removeClass('br-active').next().removeClass('br-inactive').addClass('br-active');
+// $("#prev").click(function(){
+//     $('.br-active').fadeToggle().removeClass('br-active').next().removeClass('br-inactive').addClass('br-active');
     
 
-});
+// });
 
 
 
 
 
-
-
-//DINAMICKI ISPIS
-
-//objekti
-// delay, fa-icon, broj, text 
 
 //#region Objekti Za Dinamicki Ispis
 var FeatureObjs = [
@@ -387,7 +364,7 @@ var teamObjs = [
             ig: 'https://www.instagram.com/'
         },
         name: 'Andreja Sreckovic',
-        proffesion: 'Proffesional Class Skipper'
+        proffesion: 'Programmer'
     },
     {
         img:{
@@ -401,7 +378,7 @@ var teamObjs = [
             ig: 'https://www.instagram.com/'
         },
         name: 'Sanja Pavlovic',
-        proffesion: 'Voli milanka'
+        proffesion: 'Programmer'
     },
     {
         img:{
@@ -415,7 +392,7 @@ var teamObjs = [
             ig: 'https://www.instagram.com/'
         },
         name: 'Milos Milinkovic',
-        proffesion: 'Muffin Baker'
+        proffesion: 'Programmer'
     }
 ];
 //#endregion
@@ -580,6 +557,9 @@ function isEmpty(){
 
 window.onload = function()
 {
+
+
+
     // postavi focus dogadjaj na svaki element forme (text(ime), email i mobile(text))
     var elementi = document.getElementsByTagName("input");
     for(let el of elementi){
@@ -845,6 +825,15 @@ window.onload = function()
         }
         
 
+       var ckcbx =  document.querySelector("#news");
+        $("#news").change(function(){
+           if(ckcbx.checked)
+           {
+                $("#subscribed").slideToggle();
+           }
+           else
+                $("#subscribed").slideToggle();
+        });
 
 
 }

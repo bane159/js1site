@@ -627,6 +627,8 @@
 .footer .copyright a:hover {
     color: var(--primary);
 }
+
+
 /* ----------------------------------------------------------------------------------------------------------------------------------------------- */
 /* -          -            -            -                 main css       -         -           -           -           -           -     - */
 *{
@@ -644,6 +646,11 @@
     background-color:#008080 ;
     color:white;
 }
+.br-btn:hover{
+    background-color:#008080 ;
+    color:white;
+    transform: scale(1.02);
+}  
 
 .br-about{
     object-fit: cover;
@@ -690,9 +697,57 @@ textarea{
     animation-duration: 0.6s;
     animation-timing-function: ease;
 }
-.slide{
+/* .slide{
     display: none;
-}
+} */
 .br-active{
     display: block!important;
+    /* transition: 0.4s; */
+}
+.br-inactive{
+    display: none!important;
+}
+/* .img-hold{
+    width: 100%;
+    height: auto;
+} */
+.slide{
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+}
+#controls{
+    position: relative;
+    top: -80px;
+    left: 500px;
+}
+@keyframes dissapear {
+    0%{bottom: 45px;opacity: 100;}
+    100%{
+        
+        bottom: 25px;
+        opacity: 0;
+    }
+}
+@keyframes appear {
+    0%{bottom: 25px;
+        opacity: 0;}
+    100%{
+        
+        bottom: 45px;
+        opacity: 100;
+    }
+}
+.back-to-top-dissaper{  
+    animation-name: dissapear;
+    animation-duration: 0.5s;
+    /* display: none; */
+}
+.back-to-top-appear{  
+    animation-name: appear;
+    animation-duration: 0.5s;
+    display: block!important;
+}
+.authorimg{
+    background-position: -340px;
 }

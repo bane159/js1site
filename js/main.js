@@ -113,7 +113,23 @@ $(window).scroll(function () {
 });
 
 
+
+
 //back to top dugme
+
+$(window).scroll(function () {
+    if ($(this).scrollTop() < 700) {
+        $('#bck-top').removeClass('back-to-top-appear').addClass("back-to-top-dissaper");
+        setTimeout(dissaper,490);
+    } else {
+        $('#bck-top').removeClass('back-to-top-dissaper').addClass("back-to-top-appear").removeAttr("style");
+    }
+});
+function dissaper(){
+    $('#bck-top').css("display", 'none');
+}
+
+
 $("#bck-top").click(function(){
     scroll({
             top: 0,
@@ -122,28 +138,50 @@ $("#bck-top").click(function(){
         });
 });
 
+
+
+
+
+
 //demo slider
-var slide = document.querySelector(".slide");
-console.log(slide)
-$("#slidetoggle").click(function(){
-    $(".slide").fadeOut();
-});
+// var slide = document.querySelector(".slide");
+// console.log(slide)
+// $("#slidetoggle").click(function(){
+//     $(".slide").fadeOut();
+// });
 
-let pics = ['img/carousel-1.jpg','img/carousel-2.jpg','img/carousel-3.jpg'];
-var ijk = 1;
-setInterval(function(){
+// let pics = ['img/carousel-1.jpg','img/carousel-2.jpg','img/carousel-3.jpg'];
+// var ijk = 1;
+// setInterval(function(){
     
-    slide.src = pics[ijk++];
-    if(ijk >= pics.length) ijk = 0; 
-    console.log("set interval!");
+//     slide.src = pics[ijk++];
+//     if(ijk >= pics.length) ijk = 0; 
+//     console.log("set interval!");
 
-},5000);
-
-
+// },5000);
 
 
 
 
+
+
+// setInterval(slider, 3000);
+
+
+// function slider(){
+//     console.log("radi interval");
+    
+//         var sib = $('.br-active').siblings();
+        
+//         $('.br-active').animate({opacity: "0"}).removeClass('br-active').addClass('br-inactive');
+    
+//         console.log(sib);
+// }
+$("#prev").click(function(){
+    $('.br-active').fadeToggle().removeClass('br-active').next().removeClass('br-inactive').addClass('br-active');
+    
+
+});
 
 
 

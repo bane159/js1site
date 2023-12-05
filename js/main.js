@@ -567,7 +567,7 @@ window.onload = function()
             el.addEventListener("focus", isEmpty);
     }
     
-    const nameRegEx = /^[A-Z][a-z]{1,10}$/;
+    const nameRegEx = /^[A-Z][a-z]{1,10}([ ][A-Z][a-z]{3,15}){0,2}$/;
     let name = document.querySelector("#name");
     let errorText = document.querySelector("#field-name");
     

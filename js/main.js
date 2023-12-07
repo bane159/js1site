@@ -14,7 +14,7 @@
     
     
     // Initiate the wowjs TEMPLATE CODE
-    // new WOW().init();
+    new WOW().init();
 
 
    
@@ -53,11 +53,8 @@
         center: true,
         dots: false,
         loop: true,
-        nav : true,
-        navText : [
-            '<i class="bi bi-arrow-left"></i>',
-            '<i class="bi bi-arrow-right"></i>'
-        ],
+        nav : false,
+        
         responsive: {
             0:{
                 items:1

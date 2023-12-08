@@ -81,7 +81,7 @@
 })(jQuery);
 
 
-//jQUERY
+//jQUERY MOJ KOD! NISTA VISE NIJE OD TEMPLATA
 
 //nakon sto se skrola malo dole doda se nav
 $(window).scroll(function () {
@@ -95,7 +95,7 @@ $(window).scroll(function () {
 
 
 
-//back to top dugme
+//back to top dugme da
 
 $(window).scroll(function () {
     if ($(this).scrollTop() < 600) {

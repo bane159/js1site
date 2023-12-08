@@ -649,7 +649,7 @@
 .br-btn:hover{
     background-color:#008080 ;
     color:white;
-    transform: scale(1.02);
+    /* transform: scale(1.02); */
     overflow: hidden;
 }  
 

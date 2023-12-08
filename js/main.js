@@ -88,7 +88,7 @@
 
 //koristeci JQuery biblioteku waypoints kada skrolamo na ovaj element trigerujemo event.
 $('#tim')
-  .css('opacity', 0) 
+  .css('opacity', '0') 
   .waypoint(function(direction) {
     if (direction === 'down') {
       $(this.element).animate({ opacity: 1 },800)
@@ -101,20 +101,20 @@ $("#whychoose")
 .css('left', '-500px')
 .waypoint(function(direction){
     if (direction === 'down') {
-        $(this.element).animate({ left: 0 },800)
-      
-    }
-    
+        $(this.element).animate({ left: 0 },800)   
+    } 
 })
+
+
 $('#about-holder')
-  .css('left', 500) 
+  .css('left', '500px') 
   .waypoint(function(direction) {
     if (direction === 'down') {
       $(this.element).animate({ left:0 },800)
     }
   });
 $("#services-holder")
-.css('opacity', 0)
+.css('opacity', '0')
 .waypoint(function(direction){
     if (direction === 'down') {
         $(this.element).animate({ opacity: 1 },800)   

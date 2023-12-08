@@ -1,8 +1,8 @@
-//BIO TEMPLATE JS SADA JE VECINOM PROMENJEN  - zakomentatisan
+
 (function ($) {
     "use strict";
 
-    // Spinner 
+    // Spinner TEMPLATE
     var spinner = function () {
         setTimeout(function () {
             if ($('#spinner').length > 0) {
@@ -14,7 +14,7 @@
     
     
     // Initiate the wowjs TEMPLATE CODE
-    new WOW().init();
+    // new WOW().init();
 
 
    

@@ -1,5 +1,5 @@
 
-(function ($) {
+(function ($) { //CELA FUNKCIJA JE TEMPLATE
     "use strict";
 
     // Spinner TEMPLATE
@@ -24,46 +24,46 @@
     
 
 
-    // Facts counter JQuery promeni kasnije 
+    // Facts counter JQuery biblioteka koriscena.
     $('[data-toggle="counter-up"]').counterUp({
         delay: 10,
-        time: 2000
+        time: 1500
     });
 
 
     // Header carousel karosel library owl 
-    $(".header-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        items: 1,
-        dots: true,
-        loop: true,
-        nav : true,
-        navText : [
-            '<i class="bi bi-chevron-left"></i>',
-            '<i class="bi bi-chevron-right"></i>'
-        ]
-    });
+    // $(".header-carousel").owlCarousel({
+    //     autoplay: true,
+    //     smartSpeed: 1000,
+    //     items: 1,
+    //     dots: true,
+    //     loop: true,
+    //     nav : true,
+    //     navText : [
+    //         '<i class="bi bi-chevron-left"></i>',
+    //         '<i class="bi bi-chevron-right"></i>'
+    //     ]
+    // });
 
 
     // Testimonials carousel karosel library owl
-    $(".testimonial-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        center: true,
-        dots: false,
-        loop: true,
-        nav : false,
+    // $(".testimonial-carousel").owlCarousel({
+    //     autoplay: true,
+    //     smartSpeed: 1000,
+    //     center: true,
+    //     dots: false,
+    //     loop: true,
+    //     nav : false,
         
-        responsive: {
-            0:{
-                items:1
-            },
-            768:{
-                items:2
-            }
-        }
-    });
+    //     responsive: {
+    //         0:{
+    //             items:1
+    //         },
+    //         768:{
+    //             items:2
+    //         }
+    //     }
+    // });
 
 
     // Portfolio isotope and filter filter za tip projekta TEMPLATE CODE
@@ -83,6 +83,61 @@
 
 //jQUERY MOJ KOD! NISTA VISE NIJE OD TEMPLATA
 
+
+//#region ANIMACIJE
+
+//koristeci JQuery biblioteku waypoints kada skrolamo na ovaj element trigerujemo event.
+$('#tim')
+  .css('opacity', 0) 
+  .waypoint(function(direction) {
+    if (direction === 'down') {
+      $(this.element).animate({ opacity: 1 },800)
+    //   alert()
+    }
+    
+  });
+
+$("#whychoose")
+.css('left', '-500px')
+.waypoint(function(direction){
+    if (direction === 'down') {
+        $(this.element).animate({ left: 0 },800)
+      
+    }
+    
+})
+$('#about-holder')
+  .css('left', 500) 
+  .waypoint(function(direction) {
+    if (direction === 'down') {
+      $(this.element).animate({ left:0 },800)
+    }
+  });
+$("#services-holder")
+.css('opacity', 0)
+.waypoint(function(direction){
+    if (direction === 'down') {
+        $(this.element).animate({ opacity: 1 },800)   
+    }
+})
+
+
+$("#form-hold")
+.css('right', '-500px')
+.waypoint(function(direction){
+    if (direction === 'down') {
+        $(this.element).animate({ right: 0 },800)   
+    }
+    
+})
+
+
+
+//#endregion
+
+
+
+
 //nakon sto se skrola malo dole doda se nav
 $(window).scroll(function () {
     if ($(this).scrollTop() > 600) {
@@ -95,7 +150,7 @@ $(window).scroll(function () {
 
 
 
-//back to top dugme da
+//back to top dugme
 
 $(window).scroll(function () {
     if ($(this).scrollTop() < 600) {
@@ -223,7 +278,8 @@ var servicesObj = [
             caption: 'PC Repair Services',
             paragraph: 'ByteBlend excels in diagnosing and fixing PC issues, ensuring smooth operation with expert hardware and software solutions.',
             link: 'Reach out now!'
-        }
+        },
+        id: 'Service-1'
     },
     {
         img: { 
@@ -234,7 +290,8 @@ var servicesObj = [
             caption: 'Hardware Components Sales',
             paragraph: 'Explore top-notch hardware components at ByteBlend, where quality meets expertise for your computing needs.',
             link: 'Coming Out Soon!'
-        }
+        },
+        id: 'Service-2'
     },
     {
         img: { 
@@ -245,7 +302,8 @@ var servicesObj = [
             caption: 'Custom PC Assembly',
             paragraph: 'ByteBlend crafts tailored desktops, guaranteeing high performance with customized configurations.',
             link: 'Reach out now!'
-        }
+        },
+        id: 'Service-3'
     },
     {
         img: { 
@@ -256,7 +314,8 @@ var servicesObj = [
             caption: 'Software Installation',
             paragraph: 'ByteBlend ensures seamless software setup and updates, optimizing your system for peak performance.',
             link: 'Reach out now!'
-        }
+        },
+        id: 'Service-4'
     },
     {
         img: { 
@@ -267,7 +326,8 @@ var servicesObj = [
             caption: 'Software Optimization',
             paragraph: 'ByteBlend enhances system speed and efficiency through expert tuning and maintenance services.',
             link: 'Reach out now!'
-        }
+        },
+        id: 'Service-5'
     },
     {
         img: { 
@@ -278,7 +338,8 @@ var servicesObj = [
             caption: 'Network Solutions',
             paragraph: 'ByteBlend delivers reliable wired and wireless network setups with troubleshooting and robust security measures.',
             link: 'Reach out now!'
-        }
+        },
+        id: 'Service-6'
     },
 
 ];
@@ -458,7 +519,7 @@ projectHold.innerHTML = projectHTML;
 //#region dinamic ispis services
 function makeService(service)
 {
-    return `<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+    return `<div class="col-md-6 col-lg-4 position-relative" id = '${service.id}' data-wow-delay="0.5s">
                 <div class="service-item">
                     <div class="overflow-hidden">
                         <img class="img-fluid"src="${service.img.src}" alt="${service.img.alt}" /></div><div class="p-4 text-center border border-5 border-light border-top-0"><h4 class="mb-3">${service.text.caption}</h4><p>${service.text.paragraph}</p>

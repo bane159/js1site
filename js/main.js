@@ -12,72 +12,14 @@
     };
     spinner();
     
-    
-    // Initiate the wowjs TEMPLATE CODE
-    // new WOW().init();
-
-
-   
-
-    
-    
-    
-
-
     // Facts counter JQuery biblioteka koriscena.
     $('[data-toggle="counter-up"]').counterUp({
-        delay: 10,
+        delay: 20,
         time: 1500
     });
 
 
-    // Header carousel karosel library owl 
-    // $(".header-carousel").owlCarousel({
-    //     autoplay: true,
-    //     smartSpeed: 1000,
-    //     items: 1,
-    //     dots: true,
-    //     loop: true,
-    //     nav : true,
-    //     navText : [
-    //         '<i class="bi bi-chevron-left"></i>',
-    //         '<i class="bi bi-chevron-right"></i>'
-    //     ]
-    // });
 
-
-    // Testimonials carousel karosel library owl
-    // $(".testimonial-carousel").owlCarousel({
-    //     autoplay: true,
-    //     smartSpeed: 1000,
-    //     center: true,
-    //     dots: false,
-    //     loop: true,
-    //     nav : false,
-        
-    //     responsive: {
-    //         0:{
-    //             items:1
-    //         },
-    //         768:{
-    //             items:2
-    //         }
-    //     }
-    // });
-
-
-    // Portfolio isotope and filter filter za tip projekta TEMPLATE CODE
-    // var portfolioIsotope = $('.portfolio-container').isotope({
-    //     itemSelector: '.portfolio-item',
-    //     layoutMode: 'fitRows'
-    // });
-    // $('#portfolio-flters li').on('click', function () {
-    //     $("#portfolio-flters li").removeClass('active');
-    //     $(this).addClass('active');
-
-    //     portfolioIsotope.isotope({filter: $(this).data('filter')});
-    // });
-    
 })(jQuery);
 
 
@@ -103,23 +45,24 @@ $("#whychoose")
     if (direction === 'down') {
         $(this.element).animate({ left: 0 },800)   
     } 
-})
+});
 
 
-$('#about-holder')
-  .css('left', '500px') 
-  .waypoint(function(direction) {
-    if (direction === 'down') {
-      $(this.element).animate({ left:0 },800)
-    }
-  });
-$("#services-holder")
-.css('opacity', '0')
-.waypoint(function(direction){
-    if (direction === 'down') {
-        $(this.element).animate({ opacity: 1 },800)   
-    }
-})
+// $('#about-holder')
+//   .css('left', '500px') 
+//   .waypoint(function(direction) {
+//     if (direction === 'down') {
+//       $(this.element).animate({ left:0 },800)
+//     }
+//   });
+  
+// $("#services-holder")
+// .css('opacity', '0')
+// .waypoint(function(direction){
+//     if (direction === 'down') {
+//         $(this.element).animate({ opacity: 1 },800)   
+//     }
+// });
 
 
 $("#form-hold")
@@ -128,8 +71,15 @@ $("#form-hold")
     if (direction === 'down') {
         $(this.element).animate({ right: 0 },800)   
     }
-    
-})
+});
+
+$("#projects-holder")
+.css('left', '-500px')
+.waypoint(function(direction){
+    if (direction === 'down') {
+        $(this.element).animate({ left: 0 },800)
+    }
+});
 
 
 
@@ -151,7 +101,6 @@ $(window).scroll(function () {
 
 
 //back to top dugme
-
 $(window).scroll(function () {
     if ($(this).scrollTop() < 600) {
         $('#bck-top').removeClass('back-to-top-appear').addClass("back-to-top-dissaper");
@@ -163,8 +112,6 @@ $(window).scroll(function () {
 function dissaper(){
     $('#bck-top').css("display", 'none');
 }
-
-
 $("#bck-top").click(function(){
     scroll({
             top: 0,
@@ -276,7 +223,7 @@ var servicesObj = [
             },
         text:{
             caption: 'PC Repair Services',
-            paragraph: 'ByteBlend excels in diagnosing and fixing PC issues, ensuring smooth operation with expert hardware and software solutions.',
+            paragraph: 'ByteBlend excels in diagnosing and fixing PC issues for smooth operation with expert hardware and software solutions.',
             link: 'Reach out now!'
         },
         id: 'Service-1'
@@ -287,8 +234,8 @@ var servicesObj = [
             alt: 'gpu'
             },
         text:{
-            caption: 'Hardware Components Sales',
-            paragraph: 'Explore top-notch hardware components at ByteBlend, where quality meets expertise for your computing needs.',
+            caption: 'Hardware Sales',
+            paragraph: 'Discover elite hardware at ByteBlend, where expertise and quality converge for all your computing essentials.',
             link: 'Coming Out Soon!'
         },
         id: 'Service-2'
@@ -300,7 +247,7 @@ var servicesObj = [
             },
         text:{
             caption: 'Custom PC Assembly',
-            paragraph: 'ByteBlend crafts tailored desktops, guaranteeing high performance with customized configurations.',
+            paragraph: 'ByteBlend crafts high-performance desktops, ensuring top-notch quality through customized configurations',
             link: 'Reach out now!'
         },
         id: 'Service-3'
@@ -312,7 +259,7 @@ var servicesObj = [
             },
         text:{
             caption: 'Software Installation',
-            paragraph: 'ByteBlend ensures seamless software setup and updates, optimizing your system for peak performance.',
+            paragraph: 'We at ByteBlend ensures seamless software setup and updates, optimizing your system for peak performance.',
             link: 'Reach out now!'
         },
         id: 'Service-4'
@@ -336,7 +283,7 @@ var servicesObj = [
             },
         text:{
             caption: 'Network Solutions',
-            paragraph: 'ByteBlend delivers reliable wired and wireless network setups with troubleshooting and robust security measures.',
+            paragraph: 'ByteBlend delivers reliable wired and wireless network setups with troubleshooting and security measures.',
             link: 'Reach out now!'
         },
         id: 'Service-6'
@@ -794,10 +741,47 @@ window.onload = function()
 
     });
 
+    //TEXTAREA
+   var msgElement = document.querySelector("#note");
+    console.log(msgElement)
+   const sqlInjectionRegex = /^[a-zA-Z0-9\s!@#$%^&*()?"<>']*$/; //dovoljavam unos svih karaktera
+
+   const isSafeInput = (value) => {
+     const forbiddenPatterns = [ //lista regexa sa peternima za sql injekciju ukoliko je samo jedan pronadjem vraca se false.
+       /\bSELECT\b.*\bFROM\b/i,
+       /\bINSERT INTO\b/i,
+       /\bUPDATE\b.*\bSET\b/i,
+       /\bDELETE FROM\b/i,
+       /\bDROP\b/i,
+       /\bCREATE\b/i,
+       /\bALTER\b/i,
+       /\bTRUNCATE\b/i,
+       /\bEXEC\b/i,
+       /\bMERGE\b/i,
+       /\bUNION\b/i,
+       /\bJOIN\b/i,
+     ];
+   
+     if (sqlInjectionRegex.test(value)) {    //proveravam da li je ispravan regex ako jeste true ako nije false, ako je naleteo na barem jedan pattern vraca false.
+       for (let pattern of forbiddenPatterns) {
+         if (pattern.test(value)) {
+           return false; 
+         }
+       }
+       return true; 
+     }
+   
+     return false; 
+   };
+
+   msgElement.onblur = () =>
+   {
+        if(isSafeInput(msgElement.value)) $("#field-textarea").addClass("d-none");
+   }
 
 
 
-        //Checking if smt selected from ddl
+    //Checking if smt selected from ddl
      var k = 0;
      let select = document.querySelector("#selectForm");
     
@@ -840,46 +824,31 @@ window.onload = function()
         {
             
             event.preventDefault();
-            if(nameRegEx.test(name.value) && mobRegex.test(mob.value) && emailRegEx.test(email.value) && k != 0){
+            if(nameRegEx.test(name.value) && mobRegex.test(mob.value) && emailRegEx.test(email.value) && k != 0 && isSafeInput(msgElement.value)){
                 form.submit();
             }
             if(!nameRegEx.test(name.value)) 
             {
                 error(`Enter a valid name: "Josh"`,errorText.id);
-                // scroll({
-                //     top: 4900,
-                //     left: 100,
-                //     behavior: "auto",
-                //   });
 
             }
             if(!emailRegEx.test(email.value))    {
                 error(`Invalid email: "username@gmail.com"`,errorTextMail.id);
-                // scroll({
-                //     top: 4900,
-                //     left: 100,
-                //     behavior: "auto",
-                //   });
             }
             if(!mobRegex.test(mob.value))        
             {
                 error(`Invalid mobile number: "0641234567"`,errorTextMob.id);
-            // scroll({
-            //     top: 4900,
-            //     left: 100,
-            //     behavior: "auto",
-            //   });
             }
 
             if(k == 0)                          
             {
                 error(`Please select a service"`,errorTextService.id);
-            //     scroll({
-            //     top: 4900,
-            //     left: 100,
-            //     behavior: "auto",
-            //   });
             }
+
+            if (!isSafeInput(msgElement.value)) {
+                $('#field-textarea').removeClass('d-none');
+              }
+           
         }
         
 
